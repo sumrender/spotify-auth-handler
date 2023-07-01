@@ -8,6 +8,11 @@ app.use(express.json());
 const clientId = process.env.CLIENT_ID;
 const redirectUri = process.env.REDIRECT_URI;
 
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path}`);
+  next();
+});
+
 app.get("/", (req, res) => {
   res.send("server is running.");
 });
